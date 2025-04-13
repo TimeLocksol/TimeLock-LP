@@ -1,14 +1,21 @@
 
-document.addEventListener("DOMContentLoaded", function() {
-    const timer = document.getElementById("timer");
-    let seconds = 7 * 3600 + 45 * 60 + 12;
-    function updateTimer() {
-        const h = String(Math.floor(seconds / 3600)).padStart(2, '0');
-        const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
-        const s = String(seconds % 60).padStart(2, '0');
-        timer.textContent = `${h}:${m}:${s}`;
-        if (seconds > 0) seconds--;
-    }
-    updateTimer();
-    setInterval(updateTimer, 1000);
-});
+const countdownEl = document.getElementById('countdown');
+const targetDate = new Date(Date.now() + 7 * 60 * 60 * 1000); // 7時間後
+
+function updateCountdown() {
+  const now = new Date();
+  const diff = targetDate - now;
+
+  if (diff <= 0) {
+    countdownEl.textContent = "Time's up!";
+    return;
+  }
+
+  const hours = String(Math.floor(diff / (1000 * 60 * 60))).padStart(2, '0');
+  const minutes = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, '0');
+  const seconds = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+
+  countdownEl.textContent = `${hours}:${minutes}:${seconds}`;
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();

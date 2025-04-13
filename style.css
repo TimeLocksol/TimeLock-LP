@@ -1,40 +1,46 @@
 
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #0c0c0c;
-    color: #fff;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #0f0f1a;
+  color: #ffffff;
+  text-align: center;
 }
-header {
-    background: #121212;
-    padding: 20px;
-    text-align: center;
+.hero-img {
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+}
+.highlight {
+  color: #00ffa3;
 }
 .countdown {
-    text-align: center;
-    margin: 40px 0;
-}
-#timer {
-    font-size: 3em;
-    color: #00ffcc;
+  font-size: 2em;
+  margin-top: 1em;
+  color: #00ffa3;
 }
 .developer-message {
-    text-align: center;
-    padding: 20px;
+  margin: 2em 0;
 }
 .developer-message img {
-    max-width: 300px;
+  max-width: 300px;
 }
 .qa {
-    padding: 20px;
+  background: #1e1e2e;
+  padding: 2em;
 }
-.answer {
-    color: red;
+.qa .question {
+  font-weight: bold;
+}
+.qa .answer {
+  margin-bottom: 1em;
+}
+.red {
+  color: red;
 }
 footer {
-    text-align: center;
-    padding: 20px;
-    font-size: 0.9em;
-    background: #1a1a1a;
+  margin-top: 3em;
+  padding: 1em;
+  background: #1a1a2a;
 }
