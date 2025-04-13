@@ -1,46 +1,50 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: linear-gradient(135deg, #0a0a23, #1c1c3c);
+  color: #fff;
   margin: 0;
-  padding: 0;
-  background: #0f0f1a;
-  color: #ffffff;
-  text-align: center;
+  padding: 20px;
 }
-.hero-img {
-  width: 100%;
-  max-height: 360px;
-  object-fit: cover;
+.hero-image {
+  max-width: 100%;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.catch {
+  text-align: center;
+  font-size: 1.3em;
+  color: #00ffe7;
 }
 .highlight {
-  color: #00ffa3;
+  color: #ffdd57;
 }
-.countdown {
-  font-size: 2em;
-  margin-top: 1em;
-  color: #00ffa3;
+.countdown-display {
+  font-size: 1.2em;
+  color: #00ffcc;
 }
-.developer-message {
-  margin: 2em 0;
+.accordion dt {
+  cursor: pointer;
+  padding: 5px;
+  background-color: #222;
+  margin-bottom: 5px;
 }
-.developer-message img {
-  max-width: 300px;
+.accordion dd {
+  margin: 0 0 10px 20px;
 }
-.qa {
-  background: #1e1e2e;
-  padding: 2em;
-}
-.qa .question {
-  font-weight: bold;
-}
-.qa .answer {
-  margin-bottom: 1em;
-}
-.red {
-  color: red;
+section {
+  margin-bottom: 40px;
 }
 footer {
-  margin-top: 3em;
-  padding: 1em;
-  background: #1a1a2a;
+  font-size: 0.9em;
+  text-align: center;
+  color: #aaa;
+}
+a {
+  color: #00f6ff;
 }

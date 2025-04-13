@@ -3,37 +3,52 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TimeLock.sol - あなたのSOLを未来へ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TimeLock.sol | あなたのSOLを未来へ預ける</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <img src="hero.png" alt="TimeLock Hero" class="hero-img" />
-    <h1>あなたのSOLを<br><span class="highlight">未来へ。</span></h1>
-    <p>完全ブロックチェーン完結の安心タイムロック。</p>
-    <div class="countdown" id="countdown">--:--:--</div>
+    <img src="hero.png" alt="TimeLock Image" class="hero-image" />
+    <h1>TimeLock.sol</h1>
+    <p class="catch">あなたのSOLを未来へ。<br><span class="highlight">完全ブロックチェーン完結</span>の、安心・安全・透明なタイムロック。</p>
   </header>
 
-  <section class="developer-message">
-    <img src="dev_message.png" alt="開発者の思い" />
-    <p>TimeLock.solは、Solanaの透明性と安全性を最大限活かして「未来に価値を届ける」ために開発されました。</p>
+  <section class="countdown">
+    <h2>カウントダウン（13年の未来へ）</h2>
+    <p id="countdown" class="countdown-display">読み込み中...</p>
+  </section>
+
+  <section class="price">
+    <h2>現在のSOL価格</h2>
+    <p id="sol-price">読み込み中...</p>
+  </section>
+
+  <section class="lock-sim">
+    <h2>ロック期間シミュレーター</h2>
+    <input type="range" id="lock-range" min="1" max="120" value="12" />
+    <span id="lock-value">12ヶ月</span>
+    <p id="lock-msg"></p>
   </section>
 
   <section class="qa">
-    <h2>Q & A</h2>
-    <div class="qa-item">
-      <p class="question">Q. 途中でロックを解除できますか？</p>
-      <p class="answer">A. <span class="red">いいえ、一度ロックした資産は指定した時間が経過するまで解除できません。</span></p>
-    </div>
-    <div class="qa-item">
-      <p class="question">Q. 誰でも使えますか？</p>
-      <p class="answer">A. <span class="red">はい、Solanaウォレットがあれば誰でも利用可能です。</span></p>
-    </div>
+    <h2>よくある質問</h2>
+    <dl class="accordion">
+      <dt>Q. ステーキングと何が違う？</dt>
+      <dd style="display: none;">→ 利回りではなく、売れない仕組みです。</dd>
+      <dt>Q. ロックしたSOLは返ってくる？</dt>
+      <dd style="display: none;">→ はい。スマートコントラクトで自動返金されます。</dd>
+      <dt>Q. 運営がいなくなったら？</dt>
+      <dd style="display: none;">→ 完全オンチェーン設計なので、誰もいなくても処理されます。</dd>
+      <dt>Q. 最小いくらから？</dt>
+      <dd style="display: none;">→ 0.01 SOLから可能。まずは小さく始められます。</dd>
+    </dl>
   </section>
 
   <footer>
-    <p>© 2025 TimeLock.sol</p>
+    <p>このプロジェクトは、GitHubにて完全公開されています。<br>
+    <a href="https://github.com/TimeLocksol/TimeLock-LP" target="_blank">GitHubで見る</a></p>
+    <p>一時的に：X（旧Twitter）<a href="https://twitter.com/KazMac_chiliz" target="_blank">@KazMac_chiliz</a></p>
   </footer>
 
   <script src="script.js"></script>
