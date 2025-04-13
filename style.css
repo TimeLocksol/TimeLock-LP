@@ -1,1 +1,40 @@
-placeholder
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #0c0c0c;
+    color: #fff;
+}
+header {
+    background: #121212;
+    padding: 20px;
+    text-align: center;
+}
+.countdown {
+    text-align: center;
+    margin: 40px 0;
+}
+#timer {
+    font-size: 3em;
+    color: #00ffcc;
+}
+.developer-message {
+    text-align: center;
+    padding: 20px;
+}
+.developer-message img {
+    max-width: 300px;
+}
+.qa {
+    padding: 20px;
+}
+.answer {
+    color: red;
+}
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+    background: #1a1a1a;
+}
