@@ -1,50 +1,45 @@
 
-document.addEventListener('DOMContentLoaded', () => {
-  const questions = document.querySelectorAll('.qa dt');
-  questions.forEach(dt => {
-    dt.addEventListener('click', () => {
-      const dd = dt.nextElementSibling;
-      dd.style.display = dd.style.display === 'block' ? 'none' : 'block';
-    });
-  });
+let publicKey;
+let countdownInterval;
 
-  const countdownEl = document.getElementById('countdown');
-  const startSeconds = 13 * 365 * 24 * 60 * 60;
-  let remaining = startSeconds;
-  function formatTime(s) {
-    const y = Math.floor(s / (365 * 24 * 3600));
-    s %= 365 * 24 * 3600;
-    const d = Math.floor(s / (24 * 3600));
-    s %= 24 * 3600;
-    const h = Math.floor(s / 3600);
-    s %= 3600;
-    const m = Math.floor(s / 60);
-    const sec = s % 60;
-    return `${y}年 ${d}日 ${h}時間 ${m}分 ${sec}秒`;
-  }
-  function updateCountdown() {
-    countdownEl.textContent = formatTime(remaining);
-    if (remaining > 0) {
-      remaining--;
-      setTimeout(updateCountdown, 1000);
+document.getElementById("connectWallet").onclick = async function() {
+  if (window.solana && window.solana.isPhantom) {
+    try {
+      const resp = await window.solana.connect();
+      publicKey = resp.publicKey.toString();
+      document.getElementById("walletAddress").textContent = `接続済み: ${publicKey}`;
+    } catch (err) {
+      alert("接続に失敗しました");
     }
+  } else {
+    alert("Phantomウォレットをインストールしてください。");
   }
-  updateCountdown();
+};
 
-  fetch('https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=jpy')
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById('sol-price').textContent = `現在のSOL価格：¥${data.solana.jpy.toLocaleString()}（Coingecko）`;
-    });
+document.getElementById("lockSol").onclick = async function() {
+  const amount = parseFloat(document.getElementById("amount").value);
+  const duration = parseInt(document.getElementById("duration").value);
+  if (!publicKey) return alert("ウォレットに接続してください");
+  if (isNaN(amount) || amount < 0.1) return alert("0.1 SOL以上を入力してください");
+  if (isNaN(duration) || duration < 1) return alert("1分以上のロック時間を入力してください");
 
-  const lockRange = document.getElementById('lock-range');
-  const lockValue = document.getElementById('lock-value');
-  const lockMsg = document.getElementById('lock-msg');
-  lockRange.addEventListener('input', () => {
-    const months = parseInt(lockRange.value);
-    lockValue.textContent = `${months}ヶ月`;
-    const futureDate = new Date();
-    futureDate.setMonth(futureDate.getMonth() + months);
-    lockMsg.textContent = `→ あなたのSOLは ${futureDate.toLocaleDateString()} に戻ってきます`;
-  });
-});
+  const unlockTime = Date.now() + duration * 60 * 1000;
+  startCountdown(unlockTime);
+  document.getElementById("status").textContent = "ロック処理はスマートコントラクトと接続準備中（ダミー表示）";
+};
+
+function startCountdown(unlockTime) {
+  clearInterval(countdownInterval);
+  countdownInterval = setInterval(() => {
+    const now = Date.now();
+    const diff = unlockTime - now;
+    if (diff <= 0) {
+      document.getElementById("countdown").textContent = "解除可能！";
+      clearInterval(countdownInterval);
+    } else {
+      const min = String(Math.floor(diff / 60000)).padStart(2, '0');
+      const sec = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+      document.getElementById("countdown").textContent = `${min}:${sec}`;
+    }
+  }, 1000);
+}

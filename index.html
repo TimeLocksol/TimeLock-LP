@@ -1,54 +1,47 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TimeLock.sol | あなたのSOLを未来へ預ける</title>
+  <title>TimeLock.sol</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@solana/web3.js@latest/lib/index.iife.js"></script>
 </head>
 <body>
   <header>
-    <img src="hero.png" alt="TimeLock Image" class="hero-image" />
-    <h1>TimeLock.sol</h1>
-    <p class="catch">あなたのSOLを未来へ。<br><span class="highlight">完全ブロックチェーン完結</span>の、安心・安全・透明なタイムロック。</p>
+    <img src="hero.png" alt="Hero" class="hero-img"/>
+    <h1>あなたのSOLを未来へ。</h1>
+    <p>完全ブロックチェーン完結の安心タイムロック。</p>
   </header>
 
+  <section class="wallet">
+    <h2>ウォレット接続</h2>
+    <button id="connectWallet">Phantomと接続</button>
+    <p id="walletAddress"></p>
+  </section>
+
+  <section class="lock">
+    <h2>SOLをロック</h2>
+    <label>ロックする金額（SOL）</label>
+    <input type="number" id="amount" value="0.1" step="0.01" min="0.1" />
+    <label>ロック期間（分）</label>
+    <input type="number" id="duration" value="10" min="1" />
+    <button id="lockSol">ロックする</button>
+    <p id="status"></p>
+  </section>
+
   <section class="countdown">
-    <h2>カウントダウン（13年の未来へ）</h2>
-    <p id="countdown" class="countdown-display">読み込み中...</p>
+    <h2>ロック解除までの時間</h2>
+    <p id="countdown">--:--:--</p>
   </section>
 
-  <section class="price">
-    <h2>現在のSOL価格</h2>
-    <p id="sol-price">読み込み中...</p>
-  </section>
-
-  <section class="lock-sim">
-    <h2>ロック期間シミュレーター</h2>
-    <input type="range" id="lock-range" min="1" max="120" value="12" />
-    <span id="lock-value">12ヶ月</span>
-    <p id="lock-msg"></p>
-  </section>
-
-  <section class="qa">
-    <h2>よくある質問</h2>
-    <dl class="accordion">
-      <dt>Q. ステーキングと何が違う？</dt>
-      <dd style="display: none;">→ 利回りではなく、売れない仕組みです。</dd>
-      <dt>Q. ロックしたSOLは返ってくる？</dt>
-      <dd style="display: none;">→ はい。スマートコントラクトで自動返金されます。</dd>
-      <dt>Q. 運営がいなくなったら？</dt>
-      <dd style="display: none;">→ 完全オンチェーン設計なので、誰もいなくても処理されます。</dd>
-      <dt>Q. 最小いくらから？</dt>
-      <dd style="display: none;">→ 0.01 SOLから可能。まずは小さく始められます。</dd>
-    </dl>
+  <section class="dev-message">
+    <h2>開発者の思い</h2>
+    <img src="dev_message.png" alt="Message" />
+    <p>感情に負けず、未来の自分を守る仕組み。それがTimeLock.solです。</p>
   </section>
 
   <footer>
-    <p>このプロジェクトは、GitHubにて完全公開されています。<br>
-    <a href="https://github.com/TimeLocksol/TimeLock-LP" target="_blank">GitHubで見る</a></p>
-    <p>一時的に：X（旧Twitter）<a href="https://twitter.com/KazMac_chiliz" target="_blank">@KazMac_chiliz</a></p>
+    <p>運営X: <a href="https://x.com/KazMac_chiliz" target="_blank">@KazMac_chiliz</a></p>
   </footer>
 
   <script src="script.js"></script>
